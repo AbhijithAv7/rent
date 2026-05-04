@@ -1,0 +1,66 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+}
+
+/* ////////////////////////////////add catogory/product//////////////////////// */
+
+/* Center the form */
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form container */
+form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* Input styling */
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Button styling */
+form button {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+form button:hover {
+    background: #333;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+}

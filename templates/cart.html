@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block code %}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Your Cart</h2>
+
+    {% if cart %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price / Day</th>
+                <th>Days</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for id, item in cart.items %}
+            <tr>
+                <td><img src="{{ item.image }}" width="60"></td>
+                <td>{{ item.name }}</td>
+                <td>₹{{ item.price }}</td>
+
+                <td>
+                    <form method="POST" action="{% url 'update_cart' id %}">
+                        {% csrf_token %}
+                        <input type="number" name="days" value="{{ item.days }}" min="1" style="width:70px;">
+                        <button class="btn btn-sm btn-dark">Update</button>
+                    </form>
+                </td>
+
+                <td>₹{{ item.price|floatformat:2 }} × {{ item.days }}</td>
+
+                <td>
+                    <a href="{% url 'remove_from_cart' id %}" class="btn btn-danger btn-sm">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4 class="text-end">Grand Total: ₹{{ total }}</h4>
+
+    <!-- RENT / CHECKOUT BUTTON -->
+    <div class="text-end mt-3">
+        <a href="{% url "payment" %}" class="btn btn-dark">Proceed to Rent</a>
+    </div>
+
+    {% else %}
+    <p class="text-center">Cart is empty</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

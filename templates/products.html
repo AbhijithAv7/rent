@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block code %}
+
+<div class="container">
+
+    <h2 class="mb-4 text-center">Products</h2>
+
+    <div class="mb-4 text-center">
+        <a href="{% url 'products' %}" class="btn btn-dark">All</a>
+
+        {% for cat in categories %}
+            <a href="{% url 'category_products' cat.id %}" class="btn btn-outline-dark">
+                {{ cat.name }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {% for dress in dresses %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <img src="{{ dress.image.url }}" class="card-img-top" style="height:200px; object-fit:cover;">
+
+                <div class="card-body text-center">
+                    <h6 class="fw-bold">{{ dress.name }}</h6>
+                    <p class="text-muted">₹{{ dress.price_per_day }} / day</p>
+
+                    <a href="{% url 'product_detail' dress.id %}" class="btn btn-dark btn-sm">
+                        View
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

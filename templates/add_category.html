@@ -1,0 +1,18 @@
+{% extends "admin_base.html" %}
+
+{% block link %}
+
+<link rel="stylesheet" href="/static/css/dashboard.css">
+
+{% endblock %}
+
+{% block code %}
+<h3>Add Category</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-dark">Save</button>
+</form>
+
+{% endblock %}

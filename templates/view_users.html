@@ -1,0 +1,38 @@
+{% extends "admin_base.html" %}
+
+{% block link %}
+<link rel="stylesheet" href="/static/css/dashboard.css">
+{% endblock %}
+
+{% block code %}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Users</h2>
+
+    {% if users %}
+    <div class="row">
+        {% for user in users %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+
+            <div class="card user-card h-100 text-center p-3">
+
+                <div class="card-body">
+                    <h5 class="fw-bold">{{ user.username }}</h5>
+                    <p class="text-muted small">{{ user.email }}</p>
+
+                    <p class="mb-1"><strong>ID:</strong> {{ user.id }}</p>
+                    <p class="mb-0"><strong>Joined:</strong> {{ user.date_joined|date:"M d, Y" }}</p>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+        <p class="text-center">No users found</p>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock link %}
+
+{% block code %}
+
+<div class="form-container">
+    <form method="POST" class="form-box">
+        {% csrf_token %}
+
+        <h2>Login</h2>
+
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button type="submit">Login</button>
+
+        <p style="text-align:center; margin-top:10px;">
+            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+        </p>
+
+    </form>
+</div>
+
+{% endblock code %}
